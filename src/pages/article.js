@@ -1,12 +1,26 @@
 import React from "react";
+import React, {useMemo} from "react";
 import {useParams} from "react-router";
 import Data from '../components/data';
 
 function Article(){
     const {id}= useParams();
     const articleData = Data.find((article) => (
-        article.id= id
+        article.id=== id
     ))
+
+
+     // console.log(articleData);
+
+    const date = useMemo(() => {
+    if(!articleData) return "";
+
+    const parsedDate= new Date(articleData.publishedDate);
+    //console.log(parsedDate);
+    return parsedDate.toDateString();
+    }, [articleData]);
+
+  
 
     //console.log(id);
     return (
@@ -14,23 +28,43 @@ function Article(){
             <header
                 className="article--header"
                 style= {{
-                    backgroundImage: "",
+                    backgroundImage: `url('${articleData.image.url}')`,
+                    backgroundPosition: "center",
                     backgroundSize: "cover",
-                 } }}
+                 } }
 
                 >
                     <div className= "article--header--wrapper">
-                        <h1> Article Title</h1>
-                        <p> Wednesday, August 22</p>
-
-
+                        <h1> {articleData.title}</h1>
+                        <p> {date}</p>
+                        <p className="blurb"> {ar}</p>
                         </div>
-        <div>
+                    </header> 
+                    
+                    <section className= "article--content">
+                        {articleData.articleText.map((text,i)=> {
+                            // i in the index in this situation, text is the object//
+                            const type = text.type; 
+                            switch(type) {
+                                case "p":
+                                    return <p key= {i}>{text.data}</p>;
+                                case "h1":
+                                    return <h1 key={i}>{text.data}</h1>;
+                                case "h2":
+                                    return <h2 key= {i}>{text.data}</h2>;
+                                case "h3":
+                                    return <h3 key={i}>{text.data}</h3>;
+                                case "h4":
+                                    return <h4 key={i}>{text.data}</h4>;
+                                default:
+                                    return <p key={i}> {text.data}</p>
+                        }
+                        
+                    })}
+                        
+                         </section>
+                         </main>
+                    );
+                }
 
-            <h1> Articles </h1>
-        </div>
-        </main>
-    );
-}
-
-export default Article;
+               export default Article;
