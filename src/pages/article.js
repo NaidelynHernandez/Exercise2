@@ -1,23 +1,21 @@
 import React, {useMemo} from "react";
 import {useParams} from "react-router";
-import Data from '../components/data';
+import Data from "../components/data";
 
 function Article(){
     const {id}= useParams();
-    const articleData = Data.find((article) => (
-        article.id=== id
-    ))
+    const articleData = Data.find((article) => article.id === id);
 
 
      // console.log(articleData);
-
-    const date = useMemo(() => {
+     //console.log(parsedDate);//
+    const articleDate = useMemo(() => {
     if(!articleData) return "";
-
     const parsedDate= new Date(articleData.publishedDate);
-    //console.log(parsedDate);
+    
     return parsedDate.toDateString();
-    }, [articleData]);
+    }, [articleData]
+    );
 
   
 
@@ -35,7 +33,7 @@ function Article(){
                 >
                     <div className= "article--header--wrapper">
                         <h1> {articleData.title}</h1>
-                        <p> {articleData}</p>
+                        <p> {articleDate}</p>
                         <p> {articleData.blurb}</p>
                         </div>
                     </header> 

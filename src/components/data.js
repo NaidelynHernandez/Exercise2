@@ -1,4 +1,4 @@
-const Data= [
+export default [
     {
     "id": "article-one",
     "title": "Article One: First Fake Article",
@@ -197,8 +197,9 @@ const Data= [
       "url": "https://via.placeholder.com/2000x1200",
       "alt": "A placeholder image"
     },
-    "publishedDate": "Wed Aug 22 2019 17:04:38 GMT-0400"}];
-export default Data; 
+    "publishedDate": "Wed Aug 22 2019 17:04:38 GMT-0400"
+}];
+
 
 /* or export default [{}]; */
 

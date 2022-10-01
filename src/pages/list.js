@@ -1,6 +1,6 @@
 import React from "react";
 import ArticleCard from "../components/ArticleCard";
-import Data from "../components/data"
+import Data from "../components/data";
 
 
 function List(){
@@ -10,7 +10,7 @@ function List(){
     {Data.map((article,i) => (
    <ArticleCard 
     key = {i}
-    description = {article.blurb}
+    blurb = {article.blurb}
     date = {article.publishedDate}
     id= {article.id}
     title= {article.title}
