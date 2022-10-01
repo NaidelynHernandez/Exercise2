@@ -1,5 +1,5 @@
 import React from "react";
-import ArticleCard from "../components/articlecard";
+import ArticleCard from "../components/ArticleCard";
 import Data from "../components/data"
 
 
@@ -21,4 +21,6 @@ function List(){
     </main>
     );
     }
-    
+
+
+    export default List;

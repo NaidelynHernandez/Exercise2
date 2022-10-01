@@ -1,4 +1,3 @@
-import React from "react";
 import React, {useMemo} from "react";
 import {useParams} from "react-router";
 import Data from '../components/data';
@@ -36,8 +35,8 @@ function Article(){
                 >
                     <div className= "article--header--wrapper">
                         <h1> {articleData.title}</h1>
-                        <p> {date}</p>
-                        <p className="blurb"> {ar}</p>
+                        <p> {articleData}</p>
+                        <p> {articleData.blurb}</p>
                         </div>
                     </header> 
                     
